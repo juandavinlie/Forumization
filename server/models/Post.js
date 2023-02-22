@@ -6,6 +6,10 @@ const postSchema = mongoose.Schema(
             type: String,
             required: true,
         },
+        userName: {
+            type: String,
+            required: true,
+        },
         sectionId: {
             type: String,
             required: true,
@@ -27,7 +31,9 @@ const postSchema = mongoose.Schema(
             of: Boolean,
         },
         picturePath: String,
-    }
+        userPicturePath: String,
+    },
+    { timestamps: true }
 )
 
 const Post = mongoose.model("Post", postSchema);

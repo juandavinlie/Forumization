@@ -3,7 +3,6 @@ import Space from "../models/Space.js";
 /* CREATE */
 export const createSpace = async (req, res) => {
     try {
-        console.log("creating space");
         const { name, description, picturePath } = req.body;
         const newSpace = new Space({
             name,

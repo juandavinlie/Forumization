@@ -1,10 +1,12 @@
 import express from "express";
-import { getMainPost, getPost } from "../controllers/posts.js";
+import { getSectionPosts, getPost, likePost, getStructuredMainPost } from "../controllers/posts.js";
 import { verifyToken } from "../middleware/auth.js";
 
 const router = express.Router();
 
-router.get("/:sectionId", verifyToken, getMainPost);
-router.get("/:postId/post", verifyToken, getPost);
+router.get("/:sectionId", verifyToken, getSectionPosts);
+router.get("/:sectionId/structured", verifyToken, getStructuredMainPost);
+
+router.patch("/:id/like", verifyToken, likePost);
 
 export default router;

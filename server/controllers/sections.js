@@ -5,7 +5,7 @@ import Section from "../models/Section.js";
 export const createSectionForSpace = async (req, res) => {
     try {
         const { spaceId } = req.params;
-        const { name, description, userId, mainPostDescription, picturePath } = req.body;
+        const { name, description, userId, mainPostDescription, picturePath, userName, userPicturePath } = req.body;
 
         const newSection = new Section({
             spaceId,
@@ -16,12 +16,14 @@ export const createSectionForSpace = async (req, res) => {
 
         const newMainPost = new Post({
             userId,
+            userName,
             sectionId: newSection._id,
             type: "main",
             description: mainPostDescription,
             postReplies: [],
             likes: {},
             picturePath,
+            userPicturePath,
         })
         await newMainPost.save();
 
